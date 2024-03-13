@@ -1,0 +1,3 @@
+D:/BÉ GIANG/KTLT/demo2_zoom/cmake-build-debug/CMakeFiles/demo2_zoom.dir
+D:/BÉ GIANG/KTLT/demo2_zoom/cmake-build-debug/CMakeFiles/edit_cache.dir
+D:/BÉ GIANG/KTLT/demo2_zoom/cmake-build-debug/CMakeFiles/rebuild_cache.dir

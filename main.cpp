@@ -1,40 +1,62 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-struct Zoom{
+# define MAX 100
+struct Ngay{
+    int ngay;
+    int thang;
+    int nam;
+};
+struct Room{
     char id[8];
     char type[15];
-    long int price;
-    int d_hire;
+    long  price;
+    struct Ngay D_Hire;
     int days;
 };
-void inputZoom(Zoom &a)
+void input_1_Room(struct Room *t)
 {
-    printf("ID: "); scanf("%s",a.id); fflush(stdin);
-    printf("Type: "); scanf("%s",a.type);
-    printf("Price: ");scanf("%ld",& a.price);
-    printf("Day hire: "); scanf("%d",&a.d_hire);
-    printf("Days: "); scanf("%d", &a.days);
+    printf("Nhap ID: "); scanf("%s",t->id); fflush(stdin);
+    printf("Nhap Type: "); scanf("%s",t->type);
+    printf("Nhap Price: ");scanf("%ld",& t->price);
+    printf("Nhap Day hire: "); scanf("%d %d %d",&t->D_Hire.ngay,&t->D_Hire.thang,&t->D_Hire.nam);
+    printf("Nhap Days: "); scanf("%d", &t->days);
 }
-void printZoom(Zoom a)
+void input_n_Room(struct Room a[],int *n)
 {
-    printf("%s\t%s\t%ld\t%d\t%d\t\n",a.id,a.type,a.price,a.d_hire,a.days);
+    printf("Nhap so luong phong:");
+    scanf("%d", n);
+    for(int i=0;i<*n;i++)
+    {
+        printf("Nhap phong thu %d: \n",i+1);
+        input_1_Room(&a[i]);
+    }
+}
+void print_1_Room(struct Room t)
+{
+    printf("ID: %s\n",t.id);
+    printf("Type: %s\n",t.type);
+    printf("Price: %ld\n",t.price);
+    printf("Day Hire: %d/%d/%d\n",t.D_Hire.ngay,t.D_Hire.thang,t.D_Hire.nam);
+    printf("Days: %d\n",t.days);
+}
+void print_n_Room(struct Room a[],int n)
+{
+    for(int i=0;i<n;i++)
+    {
+        printf("Thong tin phong thu %d:\n",i+1);
+        print_1_Room(a[i]);
+        printf("\n");
+    }
+
 }
 int main() {
-    struct Zoom a[100];
-    int n;
-    printf("So luong phong(toi da 100): ");
-    scanf("%d",&n);
-    printf("Thong tin cua phong: \n");
-    for(int i=0;i<n;i++)
-    {
-        inputZoom(a[i]);
+    struct Room danhSach[MAX];
+    int soLuong;
+    input_n_Room(danhSach,&soLuong);
+    printf("\nDanh sach phong:\n");
+    print_n_Room(danhSach,soLuong);
 
-    }
-    for(int i=0;i<n;i++)
-    {
-        printZoom(a[i]);
-    }
 }
 
 
